@@ -13,7 +13,7 @@ To get the upper and lower sensitivity for the parameter, Railsback and Grimm pr
 
 *Splus* = (*Cplus* - *C*)/(*dP*/*P*)
  
-*Sminus* = (*C* - *Cminus*/(*dP*/*P*)
+*Sminus* = (*C* - *Cminus*)/(*dP*/*P*)
  
 This is obviously quite tedious to do by hand, particularly when one is doing very basic local sensitivity analysis sequentially on each parameter. Hence I wrote a tiny command line program for doing both equations at once. 
 
@@ -54,6 +54,6 @@ Upper Sensitivity =  56.6
 Lower Sensitivity =  89.2
 ```
 
-Unless all desired inputs (name of your parameter, the default parameter value, the +- range you are varying your parameter by, model currency when the parameter is varied up, and model currency when the parameter is varied down) provided, the script will return errors. 
+Unless all desired inputs (name of your parameter, the default parameter value, the +- range you are varying your parameter by, model currency when the parameter is varied up, and model currency when the parameter is varied down) are provided, the script will return errors. 
 
 For more information on the underlying method and how to go about getting *P*, *dP*, *C*, *Cplus*, and *Cminus*, see Grimm and Railsback's book.
