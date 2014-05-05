@@ -5,11 +5,11 @@ Basic command-line tool for doing quick local sensitivity analysis.
 
 Implements basic local sensitivity analysis equation:
 
-    S^+ = (C^+ - C)/(dP/P)
+    Splus = (Cplus - C)/(dP/P)
 
-    S^- = (C - C^-)/(dP/P)
+    Sminus = (C - Cminus)/(dP/P)
 
-where S^+ = upper sensitivity, S^- = lower sensitivity, C^+ = model currency with upper value, C^- = model currency with lower value,
+where Splus = upper sensitivity, Sminus = lower sensitivity, Cplus = model currency with upper value, Cminus = model currency with lower value,
 C is reference currency value, P is default parameter, dP is range to vary parameter.
 
 Take user command line arguments and returns parameter name, default parameter value, upper sensitivity, and lower sensitivity.
@@ -43,8 +43,8 @@ class SensitivityEquation(object):
     def calculate(self):
         """
         calculates following equations:
-            S^+ = (C^+ - C)/(dP/P)
-            S^- = (C - C^-)/(dP/P)
+            Splus = (Cplus - C)/(dP/P)
+            Sminus- = (C - Cminus)/(dP/P)
         """
         self.splus = (self.cplus - self.cref)/(self.dp/self.p)
         self.sminus = (self.cref - self.cminus)/(self.dp/self.p)
