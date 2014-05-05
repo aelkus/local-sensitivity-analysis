@@ -57,6 +57,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Enter parameter name, parameter value, parameter variance, reference currency value, upper currency value, lower currency value, and name of output file.')
 
     #input arguments
+    #if left on defaults, will return errors
 
     parser.add_argument('--Pn', '--parameter_name', type=str, default="insert string", help='name of parameter', metavar='pn', dest='pn')
     parser.add_argument('--P','--parameter_value', type=float, default=0.0, help='parameter value', metavar='p', dest='p')
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     parser.add_argument('--Cp', '--currency_plus', type=float, default=0.0, help='currency value for upper region of parameter', metavar= 'cp', dest='cplus')
     parser.add_argument('--Cm', '--currency_minus', type=float, default=0.0, help='currency value for lower region of parameter', metavar='cm', dest='cminus')
 
-    #create parser object
+    #argument parsing
     args = parser.parse_args()
 
     #intialize an equation
