@@ -17,15 +17,42 @@ To get the upper and lower sensitivity for the parameter, Railsback and Grimm pr
  
 This is obviously quite tedious to do by hand, particularly when one is doing very basic local sensitivity analysis sequentially on each parameter. Hence I wrote a tiny command line program for doing both equations at once. 
 
-After downloading the script to a desired present working directory and cd'ing to that folder in their command line terminal, the user inputs the following:
+After downloading the script to a desired present working directory and cd'ing to that folder in their command line terminal, the user gives the following command line options with their appropriate value pairs:
 
-python localSA.py --Pn *parameter name* --P *default parameter value* --Dp *range to vary* --Cr *currency reference value* --Cp *upper currency value* --Cm *lower currency value*
+`--Pn`: the parameter name 
+
+`--P`: the default parameter value 
+
+`--Dp`: the range to vary the parameter by 
+
+`--Cr`: the currency computed for model with default parameter value 
+
+`--Cp`: the currency computed for model with default parameter value + *dP* 
+
+`--Cm`: the currency computed for model with default parameter value - *dP* 
+
+Here's an example:
+
+```
+python localSA.py --Pn fooParameter --P 80 --Dp 4 --Cr 300 --Cp 300.1 --Cm 299.8
+```
 
 After the desired inputs are provided, the program outputs the parameter name, default parameter value, paramater variance range, and upper and lower sensitivity values to the command line. 
 
 Assuming your parameter name is "BallerStatus," your default parameter value is 100, you chose to vary it by 5, the upper model currency computed when BallerStatus is 105 is 702.83, and the lower model currency you got when you ran BallerStatus at parameter value 95 is 695.54, you would use this program with the following inputs:
 
+```
 python localSA.py --Pn BallerStatus --P 100 --Dp 5 --Cr 700 --Cp 702.83 --Cm 695.54
+```
+The outputs that follow:
+
+```
+Parameter name  =  BallerStatus
+Parameter value =  100.0
+Parameter variance =  5.0
+Upper Sensitivity =  56.6
+Lower Sensitivity =  89.2
+```
 
 Unless all desired inputs (name of your parameter, the default parameter value, the +- range you are varying your parameter by, model currency when the parameter is varied up, and model currency when the parameter is varied down) provided, the script will return errors. 
 
