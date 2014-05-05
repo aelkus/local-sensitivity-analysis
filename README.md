@@ -3,7 +3,7 @@ local-sensitivity-analysis
 
 A small and quick command line tool for doing quick sensitivity calculations in agent-based models (ABMs). Mostly just (1) labor-saving device for me (2) experiment with argparse module and (3) a potential piece of a larger ABM sensitivity analysis program that I may make when I have more time. It's quick and dirty and will be iteratively upgraded as time permits.
 
-In Steven F. Railsback and Volker Grimm's book *Agent-Based and Individual-Based Modeling: A Practical Introduction*, they advocate paying attention to model "currencies" that denote some observational values of interest produced by the model. For both model analysis and calibration of model procedures the modeler performs local sensitivty analysis to figure out how sensitive particular parameter values are to small changes. On page 293, they introduce a basic form of sensitivity analysis that can be used to find sensitivity above and below the reference value for a parameter. Usually, + or - 5% (*dP*) produces the range to vary the parameter of interest (*P*) by. 
+In Steven F. Railsback and Volker Grimm's book *Agent-Based and Individual-Based Modeling: A Practical Introduction*, they advocate paying attention to model "currencies" that denote some observational values of interest produced by the model. For both model analysis and calibration of model procedures the modeler performs local sensitivity analysis to figure out how sensitive particular parameter values are to small changes. On page 293, they introduce a basic form of sensitivity analysis that can be used to find sensitivity above and below the reference value for a parameter. Usually, + or - 5% (*dP*) produces the range to vary the parameter of interest (*P*) by. 
 
 For example, 5% of 80 is 4. Hence, if the modeler has a parameter set at the reference value of 80, they would vary it by 4 (76, 84). They would run it at the parameter value of 80 to get *C*, the currency value with the default parameter setting. By running it at 76 and 84, they would derive *Cminus* and *Cplus*, the currency values for default parameter value - *dP* and default parameter + *dP*.
 
@@ -28,3 +28,5 @@ Assuming your parameter name is "BallerStatus," your default parameter value is 
 python localSA.py --Pn BallerStatus --P 100 --Dp 5 --Cr 700 --Cp 702.83 --Cm 695.54
 
 Unless all desired inputs (name of your parameter, the default parameter value, the +- range you are varying your parameter by, model currency when the parameter is varied up, and model currency when the parameter is varied down) provided, the script will return errors. 
+
+For more information on the underlying method and how to go about getting *P*, *dP*, *C*, *Cplus*, and *Cminus*, see Grimm and Railsback's book.
